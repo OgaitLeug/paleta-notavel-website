@@ -294,6 +294,7 @@
     </footer>
 
     <script>
+      // --- 1. O teu código original do Menu (Mantido Intacto) ---
       const menuToggle = document.querySelector(".menu-toggle");
       const nav = document.querySelector(".nav");
       const navLinks = document.querySelectorAll(".nav a");
@@ -306,6 +307,20 @@
         link.addEventListener("click", () => {
           nav.classList.remove("active");
         });
+      });
+
+      // --- 2. Correção de Scroll Sênior para o Refresh do Telemóvel ---
+      if ("scrollRestoration" in history) {
+        history.scrollRestoration = "manual";
+      }
+
+      window.addEventListener("load", function () {
+        setTimeout(function () {
+          window.scrollTo({
+            top: 0,
+            behavior: "instant",
+          });
+        }, 50);
       });
     </script>
   </body>
