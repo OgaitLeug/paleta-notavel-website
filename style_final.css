@@ -259,180 +259,339 @@ body {
   color: #9ca3af;
 }
 /* ========== ABOUT ========== */
+/* =========================================================
+   ========== ABOUT SECTION (HISTÓRIA & MASCOTE) ==========
+   ========================================================= */
+
 .about {
-  padding: 2.5rem 0;
+  padding: 3rem 0;
   scroll-margin-top: 90px;
 }
 
 .about-header {
-  margin-bottom: 0.9rem;
+  margin-bottom: 2rem;
 }
 
 .about-kicker {
   display: inline-block;
-  margin-bottom: 0.35rem;
-  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.85rem;
   font-weight: 700;
   color: #fb923c;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
 }
 
 .about-header h2 {
-  max-width: 620px;
-  font-size: 1.55rem;
-  line-height: 1.1;
+  max-width: 700px;
+  font-size: 1.75rem;
+  line-height: 1.25;
   letter-spacing: -0.02em;
+  color: #ffffff;
 }
 
+/* Grelha Principal (Mobile por omissão) */
 .about-content {
   display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+/* ---------------------------------------------------------
+   LADO ESQUERDO: LINHA DO TEMPO (MAIS COMPACTA)
+   --------------------------------------------------------- */
+.about-storyline {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  width: 100%;
+}
+
+.storyline-item {
+  background: #11141c;
+  border-radius: 12px;
+  padding: 1.1rem 1.3rem; /* Ligeiramente mais compacto */
+  display: flex;
+  align-items: flex-start;
   gap: 1rem;
-  align-items: start;
-}
-
-.about-text {
-  max-width: 560px;
-}
-
-.about-text p {
-  margin-bottom: 0.9rem;
-  font-size: 0.95rem;
-  line-height: 1.55;
-  color: #a6acb7;
-}
-
-.about-intro-list {
-  margin-top: 1.1rem;
-  margin-bottom: 0.45rem;
-  font-size: 1rem;
-  font-weight: 600;
-  line-height: 1.45;
-  color: #fff;
-}
-
-.about-text ul {
-  list-style: none;
-  padding-left: 0;
-  margin-top: 0.15rem;
-}
-
-.about-text li {
   position: relative;
-  padding-left: 1.2rem;
-  color: #e5e7eb;
-  font-size: 0.95rem;
-  line-height: 1.45;
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.about-text li + li {
-  margin-top: 0.35rem;
+.storyline-marker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  position: relative;
 }
 
-.about-text li::before {
-  content: "●";
+.marker-circle {
+  width: 30px;
+  height: 30px;
+  background-color: #fb923c;
+  color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  font-weight: 700;
+  z-index: 2;
+}
+
+.marker-line {
+  width: 2px;
+  background-color: rgba(255, 255, 255, 0.15);
   position: absolute;
-  left: 0;
-  top: 0.28rem;
-  color: #fb923c;
-  font-size: 0.5rem;
+  top: 30px;
+  bottom: -2.4rem;
+  z-index: 1;
 }
 
-.about-image {
+.storyline-item:last-child .marker-line {
+  display: none;
+}
+
+.storyline-content {
+  flex: 1;
+}
+
+.storyline-content h3 {
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+}
+
+.storyline-content p {
+  color: #a6acb7;
+  font-size: 0.88rem; /* Fonte ligeiramente menor no lado esquerdo */
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ---------------------------------------------------------
+   LADO DIREITO: MASCOTE & CARDS (O PROTAGONISTA)
+   --------------------------------------------------------- */
+.about-right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.about-hero-image {
+  position: relative;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
+  width: 100%;
+  margin-bottom: -1.5rem;
+  z-index: 1;
 }
 
-.about-image img {
+.hero-glow {
+  position: absolute;
+  width: 260px;
+  height: 260px;
+  background: radial-gradient(
+    circle,
+    rgba(251, 146, 60, 0.3) 0%,
+    rgba(168, 85, 247, 0.2) 50%,
+    rgba(0, 0, 0, 0) 70%
+  );
+  filter: blur(30px);
+  border-radius: 50%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.about-hero-image img {
   width: 100%;
-  max-width: 220px;
+  max-width: 280px;
   height: auto;
   object-fit: contain;
+  position: relative;
+  z-index: 1;
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5));
 }
 
-/* TABLET */
-@media (min-width: 768px) {
-  .about {
-    padding: 2.75rem 0;
+/* Grelha de 3 Colunas Lado a Lado */
+.about-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 0.6rem;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+/* Card em Vidro / Compacto */
+.stat-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 0.8rem 0.3rem;
+  text-align: center;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 105px;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.stat-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(251, 146, 60, 0.45);
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 8px 20px rgba(251, 146, 60, 0.12);
+}
+
+.stat-icon {
+  margin-bottom: 0.35rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stat-icon svg {
+  width: 20px;
+  height: 20px;
+  stroke: #fb923c;
+}
+
+.stat-card h4 {
+  color: #9ca3af;
+  font-size: 0.68rem;
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+  line-height: 1.15;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.stat-card p {
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.2;
+}
+
+/* ---------------------------------------------------------
+   RESPONSIVIDADE (MOBILE & DESKTOP)
+   --------------------------------------------------------- */
+
+/* TELEMÓVEIS PEQUENOS */
+@media (max-width: 480px) {
+  .about-hero-image img {
+    max-width: 230px;
   }
 
-  .about-header {
-    margin-bottom: 1rem;
+  .about-stats-grid {
+    gap: 0.35rem;
+  }
+
+  .stat-card {
+    padding: 0.65rem 0.2rem;
+    min-height: 98px;
+    border-radius: 10px;
+  }
+
+  .stat-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .stat-card h4 {
+    font-size: 0.62rem;
+  }
+
+  .stat-card p {
+    font-size: 0.68rem;
+  }
+}
+
+/* TABLET E PC PEQUENO (A partir de 768px) */
+@media (min-width: 768px) {
+  .about {
+    padding: 4rem 0;
   }
 
   .about-header h2 {
-    font-size: 1.9rem;
-    max-width: 680px;
+    font-size: 2.1rem;
   }
 
+  /* 0.8fr para a esquerda | 1.2fr para a direita (Destaque para a Mascote) */
   .about-content {
-    grid-template-columns: 1.1fr 0.9fr;
-    gap: 1.25rem;
-  }
-
-  .about-text {
-    max-width: 580px;
-  }
-
-  .about-text p {
-    font-size: 0.98rem;
-    line-height: 1.6;
-  }
-
-  .about-intro-list {
-    margin-top: 1.15rem;
-    margin-bottom: 0.45rem;
-    font-size: 1rem;
-  }
-
-  .about-text li {
-    font-size: 0.97rem;
-  }
-
-  .about-image img {
-    max-width: 270px;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: 2.5rem;
+    align-items: center;
   }
 }
 
-/* DESKTOP */
+/* PC DESKTOP (A partir de 1024px) */
 @media (min-width: 1024px) {
   .about {
-    padding: 3rem 0;
-  }
-
-  .about-header {
-    margin-bottom: 1rem;
+    padding: 5rem 0;
   }
 
   .about-header h2 {
     font-size: 2.3rem;
-    max-width: 760px;
   }
 
+  /* Lado Esquerdo Estreito | Lado Direito com 60% da largura total */
   .about-content {
-    grid-template-columns: 1.15fr 1fr;
-    gap: 1.5rem;
-    align-items: start;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: 3.5rem;
   }
 
-  .about-text {
-    max-width: 600px;
+  .about-right {
+    max-width: 100%;
   }
 
-  .about-text p {
-    font-size: 1rem;
-    line-height: 1.6;
+  /* Ilustração do André bem maior no PC */
+  .about-hero-image img {
+    max-width: 360px;
   }
 
-  .about-intro-list {
-    font-size: 1.05rem;
+  .hero-glow {
+    width: 320px;
+    height: 320px;
   }
 
-  .about-text li {
-    font-size: 1rem;
+  /* Cartões mais bem espaçados no PC */
+  .about-stats-grid {
+    gap: 0.8rem;
   }
 
-  .about-image img {
-    max-width: 320px;
+  .stat-card {
+    padding: 1rem 0.5rem;
+    min-height: 120px;
+  }
+
+  .stat-card h4 {
+    font-size: 0.75rem;
+  }
+
+  .stat-card p {
+    font-size: 0.85rem;
+  }
+
+  .stat-icon svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .marker-line {
+    bottom: -2.7rem;
   }
 }
 /* ========== CONTACT ========== */
@@ -538,8 +697,6 @@ body {
     border-color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
     box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
-
-/* --- Abordagem Sênior de Alta Conversão: Sempre Sólidos --- */
 
 /* 1. Botão Ligar (Laranja Vibrante) */
 .action-link--phone {
