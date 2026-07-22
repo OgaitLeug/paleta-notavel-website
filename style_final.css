@@ -770,6 +770,26 @@ body {
   text-align: center;
   color: #6b7280;
 }
+/*Social Links */
+.social-links {
+  margin: 1.5rem;
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.social-links a {
+  color: #a6acb7;
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.social-links a:hover {
+  color: #fb923c; /* Fica laranja no passar do rato */
+  transform: translateY(-2px);
+}
 
 /* ========== TABLET ========== */
 @media (min-width: 768px) {
